@@ -5,6 +5,7 @@ import { BsYoutube } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa";
 import swbLogo from "../assets/swb_logo.png";
 import swcLogo from "../assets/swc_logo.jpg";
+import cultLogo from "../assets/cult_logo.jpeg"
 import { useHomePageData } from "../hooks/useHomePageData";
 function Footer() {
   const socialUrls = {
@@ -20,7 +21,7 @@ function Footer() {
       <div className="sm:hidden w-full h-full flex flex-col gap-10 items-center justify-between px-2">
         <div className="flex items-start justify-center md:items-center gap-3 md:gap-4">
           <img
-            src={data?.homepage[0]?.logoimgurl}
+            src={cultLogo}
             alt="CULTURAL BOARD IIT GUWAHATI"
             className="h-[80px]"
           />
@@ -86,7 +87,7 @@ function Footer() {
       <div className="hidden w-full h-full sm:flex flex-col gap-10 sm:flex-row items-center justify-between">
         <div className="flex items-start md:items-center gap-3 md:gap-4">
           <img
-            src={swbLogo}
+            src={cultLogo}
             alt="CULTURAL BOARD"
             className="h-[80px] md:h-[125px]"
           />

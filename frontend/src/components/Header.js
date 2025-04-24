@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import swbLogo from "../assets/swb_logo.png";
+import cultLogo from "../assets/cult_logo.jpeg";
 import { useHomePageData } from "../hooks/useHomePageData";
 
 function Header() {
@@ -15,7 +16,7 @@ function Header() {
         <div className="w-full h-full flex items-center justify-between px-5 md:px-10 lg:px-20 xl:px-40">
           <div className="flex items-center gap-2 md:gap-3 cursor-pointer">
             <img
-              src={data?.homepage[0]?.logoimgurl}
+              src={cultLogo}
               alt="Cultural Board IIT Guwahati"
               className="w-[61px] h-[66px] md:w-[86px] md:h-[92px] object-contain"
             />
