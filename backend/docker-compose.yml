@@ -1,22 +1,25 @@
 version: "3.3"
 services:
-  app:
+  cult_app:
+    container_name: cultural_board_backend
+    image: cultural_board_backend
     build:
       context: .
       dockerfile: Dockerfile
+    restart: always
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - welfare_board_images:/usr/src/app/backend/images
+      - cult_board_images:/usr/src/app/backend/images
     ports:
-      - "8070:3001"
+      - "3891:3001"
     env_file:
       - .env
     networks:
       - backend_welfare-board-strapi
 
 volumes:
-  welfare_board_images:
+  cult_board_images:
 
 networks:
   backend_welfare-board-strapi:

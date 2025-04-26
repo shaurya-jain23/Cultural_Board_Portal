@@ -1,16 +1,16 @@
 version: "3.3"
 
 services:
-  web:
-    image: welfare_board_frontendp
-    container_name: welfare_board_frontend
+  cult_web:
+    image: cultural_board_frontend
+    container_name: cultural_board_frontend
     restart: always
     build:
         context: .
     ports:
-      - "9835:3000"
+      - "2027:3000"
     env_file:
-    - ".env.frontend"
+    - .env
     command: sh -c "cd /app && serve -s build"
     networks:
       - frontend_default
