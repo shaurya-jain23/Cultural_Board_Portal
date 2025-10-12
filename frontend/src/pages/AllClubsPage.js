@@ -7,7 +7,9 @@ function AllClubsPage() {
   return (
     <div className="w-full">
       <Header />
-      <AllClubsHeroSection />
+      <div className="pt-20">
+        <AllClubsHeroSection />
+      </div>
       <Footer />
     </div>
   );

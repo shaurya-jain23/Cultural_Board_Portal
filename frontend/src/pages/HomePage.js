@@ -7,7 +7,9 @@ function HomePage() {
   return (
     <div>
       <Header />
-      <HeroSection />
+      <div className="pt-20">
+        <HeroSection />
+      </div>
       <Footer />
     </div>
   );
