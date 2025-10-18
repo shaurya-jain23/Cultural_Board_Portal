@@ -35,7 +35,7 @@ function ContactsPage() {
   return (
     <div>
       <Header />
-      <div className="overflow-hidden opa font-poppins flex flex-col">
+      <div className="pt-20 overflow-hidden opa font-poppins flex flex-col">
         <div
           className="w-full h-[865px] bg-top bg-cover bg-no-repeat flex flex-col items-center justify-center gap-5 text-gray-200"
           style={{ backgroundImage: `url(${imgdata})` }}
