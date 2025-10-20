@@ -48,6 +48,8 @@ function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   href={socialUrls.instagram}
+                  aria-label="Instagram — Cultural Board IIT Guwahati"
+                  title="Instagram — Cultural Board IIT Guwahati"
                   className="p-3 lg:p-4 text-xl lg:text-2xl hover:bg-[#cd486b] transition-colors duration-200 border-r border-gray-400"
                 >
                   <IoLogoInstagram />
@@ -56,6 +58,8 @@ function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   href={socialUrls.youtube}
+                  aria-label="YouTube — Cultural Board IIT Guwahati"
+                  title="YouTube — Cultural Board IIT Guwahati"
                   className="p-3 lg:p-4 text-xl lg:text-2xl hover:bg-[#FF0000] transition-colors duration-200"
                 >
                   <BsYoutube />
