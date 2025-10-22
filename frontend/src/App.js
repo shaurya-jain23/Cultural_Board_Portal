@@ -4,6 +4,8 @@ import ContactsPage from "./pages/ContactsPage";
 import AllClubsPage from "./pages/AllClubsPage";
 import EachClubPage from "./pages/ClubPage";
 import EachEventPage from "./pages/EventPage";
+import AllEventsPage from "./pages/AllEventsPage";
+
 const BASEURL = process.env.REACT_APP_BASEURL||"/cultural-board";
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
           <Route path="/contacts" element={<ContactsPage />} />
           <Route path="/clubs" element={<AllClubsPage />} />
           <Route path="/club/:name" element={<EachClubPage />} />
-          <Route path="/events" element={<EachEventPage />} />
+          <Route path="/events" element={<AllEventsPage />} />
           <Route path="/event/:id" element={<EachEventPage />} />
         </Route>
       </Routes>

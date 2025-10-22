@@ -7,9 +7,10 @@ const eventSchema = new mongoose.Schema({
     trim: true,
     maxLength: [100, "Event name cannot exceed 100 characters"]
   },
-  clubName: {
+  organisedBy: {
     type: String,
     enum: [
+      "Cultural Board",
       "Palates Club",
       "Finesse Club",
       "Xpressions Club",
@@ -19,13 +20,14 @@ const eventSchema = new mongoose.Schema({
       "Debsoc Club",
       "Litsoc Club",
       "Lumiere Club",
-      "Cadence Club"
+      "Cadence Club",
+      "Alcheringa"
     ],
     required: [true, "Club name is required"],
     trim: true,
     maxLength: [100, "Club name cannot exceed 100 characters"]
   },
-  bannerImage: {
+  frontImage: {
     type: String,
     required: [true, "Banner image is required"],
     validate: {

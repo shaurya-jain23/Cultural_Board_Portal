@@ -2,7 +2,7 @@ import express from 'express';
 import { getHomePageData } from '../controllers/homePage.controller.js'; // Import the controller
 import { getAllClub, getClubById } from '../controllers/club.controller.js';
 import { getContacts } from '../controllers/contact.controller.js';
-import { getAll, getEventById } from '../controllers/event.controller.js';
+import { getAllEvents, getEventById } from '../controllers/event.controller.js';
 
 const router = express.Router();
 
@@ -12,9 +12,9 @@ router.get('/', (req, res) => {
 });
 router.get('/home', getHomePageData);
 router.get('/club/:name', getClubById);
-router.get('/event:id', getEventById);
+router.get('/event/:id', getEventById);
 router.get('/contacts', getContacts);
-router.get('/allClubs' , getAllClub);
-router.get('/allevents' , getAll);
+router.get('/allclubs' , getAllClub);
+router.get('/allevents' , getAllEvents);
 
 export default router;
