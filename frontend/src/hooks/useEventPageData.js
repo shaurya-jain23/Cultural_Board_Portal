@@ -1,26 +1,45 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export const useEventPageData = () => {
-  const [data, setData] = useState({
-    aboutData: [],
-    facilities: [],
-    teamMember: [],
-    homepage: [],
-  });
+export const useEventPageData = (eventId) => {
+  const [event, setEvent] = useState({
+    eventName: '',
+    clubName: '',
+    bannerImage: '',
+    eventIntroDesc: '',
+    eventDateAndTime: '',
+    eventVenue: '',
+    eventActivityDesc: '',
+    galleryImages: [],
+    memberImages: []});
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect( () => {
-    const fetchData = async () => {
-      await axios.get(`${process.env.REACT_APP_API_BASE_URL}/allevents`)
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((err) => {
+  useEffect(() => {
+    const fetchEvent = async () => {
+      if (!eventId) {
+        setError({ message: 'Event ID is required' });
+        setLoading(false);
+        return;
+      }
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/event/${eventId}`);
+        setEvent(response.data.data);
+        console.log(response);
+        
+      } catch (err) {
+        console.error('Error fetching event data:', err);
         setError(err);
-      });
+        setEvent(null);
+      } finally {
+        setLoading(false);
+      }
     };
-    fetchData();
-  }, []);
-  return { data, error };
+
+    fetchEvent();
+  }, [eventId]);
+
+  return { event, loading, error };
 };
