@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export const useEventPageData = () => {
+export const useAllEventsPageData = () => {
   const [data, setData] = useState({events: [], homepage: []});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);

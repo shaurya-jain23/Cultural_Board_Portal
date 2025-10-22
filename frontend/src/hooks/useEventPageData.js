@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export const useEventPageData = (eventId) => {
-  const [event, setEvent] = useState({
+  const initialEvent = {
     eventName: '',
     clubName: '',
     bannerImage: '',
@@ -11,7 +11,9 @@ export const useEventPageData = (eventId) => {
     eventVenue: '',
     eventActivityDesc: '',
     galleryImages: [],
-    memberImages: []});
+    memberImages: []
+  };
+  const [event, setEvent] = useState(initialEvent);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 

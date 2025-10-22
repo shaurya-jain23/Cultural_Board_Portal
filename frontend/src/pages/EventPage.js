@@ -19,8 +19,6 @@ function EventPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { event, loading, error } = useEventPageData(id);
-  console.log(event);
-  
 
   if (loading) {
     return (
@@ -89,17 +87,20 @@ function EventPage() {
     );
   }
 
-  const eventDate = new Date(event.eventDateAndTime);
-  const formattedDate = eventDate.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-  const formattedTime = eventDate.toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit'
-  });
-  console.log(eventDate);
+  const eventDate = new Date(event?.eventDateAndTime);
+  let formattedDate = '';
+  let formattedTime = '';
+  if (!isNaN(eventDate.getTime())) {
+      formattedDate = eventDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      formattedTime = eventDate.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
   
   // Combine all images for carousel
   const allImages = event.frontImage 

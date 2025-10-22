@@ -5,11 +5,11 @@ import { FaArrowDown, FaCalendarAlt, FaMapMarkerAlt, FaExternalLinkAlt } from "r
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import EnhancedRoundedDiv from "../components/EnhancedRoundedDiv";
-import { useEventPageData } from "../hooks/useAllEventsPageData";
+import { useAllEventsPageData } from "../hooks/useAllEventsPageData";
 import { Link } from "react-router-dom";
 
 function AllEventsPage() {
-  const { data, loading, error } = useEventPageData();
+  const { data, loading, error } = useAllEventsPageData();
   console.log("AllEventsPage data", data);
 
   if (loading) {
