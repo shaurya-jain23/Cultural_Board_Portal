@@ -75,7 +75,7 @@ function AllEventsPage() {
 
           {/* Scroll indicator */}
           <div className="absolute bottom-20 z-50 left-1/2 transform -translate-x-1/2 rounded-full bg-gray-500/30 p-3 animate-bounce">
-            <FaArrowDown className="text-white-500/80 text-2xl" />
+            <FaArrowDown className="text-white/80 text-2xl" />
           </div>
         </div>
 
