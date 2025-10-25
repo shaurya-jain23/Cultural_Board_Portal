@@ -11,18 +11,17 @@ export const getEventById = async (req, res) => {
       return res.status(404).json({ message: 'Event not found' });
     }
 
-    res.status(200).json(event);
+    res.status(200).json({success: true, data: event});
   } catch (error) {
     res.status(500).json({ message: 'Error fetching the event', error });
   }
 };
 
-export const getAll = async (req, res) => {
+export const getAllEvents = async (req, res) => {
   try {
-    const events = await Event.find();
+    const query = { isActive: true };
+    const events = await Event.find(query).sort({ eventDateAndTime: -1 });
     const homepage = await Homepage.find({});
-    const homepage2 = await Homepage.find({});
-
     res.status(200).json({ events, homepage });
   } catch (error) {
     res.status(500).json({ message: 'Error fetching events', error });
