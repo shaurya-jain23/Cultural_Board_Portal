@@ -1,5 +1,5 @@
 import { FaPhone, FaEnvelope, FaLinkedin } from "react-icons/fa";
-import { MdLocationOn, MdEmail } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
  const ContactCard = ({ contact, key,isLarge = false }) => (
     <div className={`bg-white max-w-md rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2`} key={key}>
       <div className="relative">
