@@ -79,81 +79,35 @@ function ContactsPage() {
             </p>
           </div>
         </div>
-        
+
         {/* Main Content */}
         <div className="bg-gradient-to-br from-gray-50 to-blue-50 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {contacts?.map((contact, index) => (
-              <section className="mb-20">
+            {contacts?.sort((a, b) => a?.order - b?.order).map((contact, index) => (
+              <section className="mb-20" key={contact.id}>
                 <SectionHeader
                   title={contact.title}
                   icon={FaUsers}
                   description={contact.description}
                 />
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                {contact.members.map((member) => (
-                  <ContactCard
-                    key={member.id}
-                    contact={member}
-                    isLarge={true}
-                  />
-                ))}
-              </div>
+                <div className={` gap-8 mx-auto ${
+                  contact.members.length <= 4 ? 'flex flex-row justify-center flex-wrap' : 
+                  'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+                }`}>
+                  {contact?.members.sort((a, b) => a?.order - b?.order).map((member) => (
+                    <ContactCard
+                      key={member.id}
+                      contact={member}
+                      isLarge={contact.order <=1 && member.order <=3}
+                    />
+                  ))}
+                </div>
               </section>
             ))}
-
-            {/* Emergency & Ragging Contact Section */}
-            <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Emergency Contact Section */}
-              <div className="bg-red-50 border border-red-200 rounded-xl p-8 text-center">
-                <h3 className="text-2xl font-bold text-red-800 mb-4">
-                  Emergency Contact
-                </h3>
-                <p className="text-red-700 mb-4">
-                  For urgent student welfare matters, please contact our
-                  emergency helpline:
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <a
-                    href="tel:+919876543210"
-                    className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center gap-2"
-                  >
-                    <FaPhone />
-                    Emergency Helpline: +91 7396799357
-                  </a>
-                  <span className="text-red-600 font-medium">
-                    Available 24/7
-                  </span>
-                </div>
-              </div>
-
-              {/* Anti-Ragging Contact Section */}
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 text-center">
-                <h3 className="text-2xl font-bold text-blue-800 mb-4">
-                  Anti-Ragging Helpline
-                </h3>
-                <p className="text-blue-700 mb-4">
-                  If you face or witness any ragging incident, please reach out
-                  immediately for confidential support:
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <a
-                    href="tel:+9118001805522"
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center gap-2"
-                  >
-                    <FaPhone />
-                    Helpline: 1800-180-5522
-                  </a>
-                  <span className="text-blue-600 font-medium">
-                    24/7 Confidential Support
-                  </span>
-                </div>
-              </div>
-            </section>
           </div>
         </div>
       </div>
-    <Footer />
+      <Footer />
     </>
   );
 }
