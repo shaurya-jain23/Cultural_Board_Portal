@@ -32,7 +32,8 @@ const baseContactFields = {
   phoneNo: { 
     type: String, 
     trim: true,
-    required: true
+    required: true,
+    match: [/^\+?[0-9\s\-()]{7,20}$/, 'Please provide a valid phone number']
   },
   mailId: { 
     type: String, 
