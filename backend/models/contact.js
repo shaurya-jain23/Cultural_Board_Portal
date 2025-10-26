@@ -38,7 +38,9 @@ const baseContactFields = {
   mailId: { 
     type: String, 
     trim: true,
-    required: true
+    required: true,
+    lowercase: true,
+    match: [/.+@.+\..+/, 'Please provide a valid email address']
   },
   linkedin: { 
     type: String, 
