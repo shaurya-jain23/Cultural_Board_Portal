@@ -91,14 +91,14 @@ function ContactsPage() {
                   description={contact.description}
                 />
                 <div className={` gap-8 mx-auto ${
-                  contact.members.length <= 4 ? 'flex flex-row justify-center flex-wrap' : 
+                  (contact?.members?.length || 0) <= 4 ? 'flex flex-row justify-center flex-wrap' : 
                   'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
                 }`}>
-                  {contact?.members.sort((a, b) => a?.order - b?.order).map((member) => (
+                  {(contact?.members || []).slice().sort((a, b) => (a?.order || 0) - (b?.order || 0)).map((member) => (
                     <ContactCard
                       key={member.id}
                       contact={member}
-                      isLarge={contact.order <=1 && member.order <=3}
+                      isLarge={(contact?.order || 0) <= 1 && (member?.order || 0) <= 3}
                     />
                   ))}
                 </div>
