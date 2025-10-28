@@ -1,107 +1,114 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import RoundedDiv from "../components/RoundedDiv";
-import { FaPhone } from "react-icons/fa6";
-import { MdMail } from "react-icons/md";
-import { IoLogoLinkedin } from "react-icons/io5";
-import axios from "axios"; // To make API calls
-import { useHomePageData } from "../hooks/useHomePageData";
+import ContactCard from "../components/ContactCard";
+import { FaPhone, FaUsers } from "react-icons/fa";
+import { useContactPageData } from "../hooks/useContactPageData";
+
+const SectionHeader = ({ title, icon: Icon, description }) => (
+  <div className="text-center mb-12">
+    <div className="flex items-center justify-center gap-3 mb-4">
+      <Icon className="text-[#7BB9C4] text-3xl" />
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-800">{title}</h2>
+    </div>
+    {description && (
+      <p className="text-gray-600 text-lg max-w-2xl mx-auto">{description}</p>
+    )}
+  </div>
+);
 
 function ContactsPage() {
-  const [contacts, setContacts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const {data } = useHomePageData();
+  const { data, loading, error } = useContactPageData();
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#7BB9C4]"></div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
+  if (error) {
+    return (
+      <>
+        <Header />
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              Error Loading Contacts
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Unable to load contacts at this time.
+            </p>
+            <button
+              onClick={() => window.location.reload()}
+              className="bg-[#7BB9C4] text-white px-6 py-2 rounded-lg hover:bg-[#6aa8b3] transition-colors"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
+
+  const contacts = data?.contacts || [];
   const imgdata = data?.homepage[0]?.contactpageimgurl || [];
-  useEffect(() => {
-    const fetchContacts = async () => {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/contacts`);
-        setContacts(response.data.contacts);
-        setLoading(false);
-      } catch (err) {
-        setError("Failed to load contacts.");
-        setLoading(false);
-      }
-    };
-
-    fetchContacts();
-  }, []);
-
-  // if (loading) return <p className="text-center">Loading...</p>;
-  // if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
-    <div>
+    <>
       <Header />
-      <div className="pt-20 overflow-hidden opa font-poppins flex flex-col">
+      <div className="overflow-hidden font-poppins flex flex-col">
+        {/* Hero Section */}
         <div
-          className="w-full h-[865px] bg-top bg-cover bg-no-repeat flex flex-col items-center justify-center gap-5 text-gray-200"
+          className="w-full h-[865px] bg-center bg-cover bg-no-repeat flex flex-col items-center justify-center gap-5 text-white relative"
           style={{ backgroundImage: `url(${imgdata})` }}
         >
-          <p className="text-4xl md:text-7xl font-semibold tracking-tight text-center">
-            GET IN TOUCH
-          </p>
-          <p className="text-sm sm:text-base md:text-lg tracking-tight text-center">
-            In case you have any queries, don’t hesitate to reach out to us.
-          </p>
+          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="relative z-10 text-center">
+            <p className="text-4xl md:text-7xl font-bold tracking-tight text-center drop-shadow-2xl mb-4">
+              GET IN TOUCH
+            </p>
+            <p className="text-lg md:text-xl tracking-tight text-center opacity-90 max-w-2xl mx-auto">
+              In case you have any queries, don't hesitate to reach out to us.
+              Our dedicated team is here to help you.
+            </p>
+          </div>
         </div>
 
-        {contacts?.map((contact, index) => (
-          <RoundedDiv
-            key={index}
-            Element={() => (
-              <div className="w-full flex flex-col-reverse gap-5 md:flex-row md:justify-between md:items-start px-10 md:px-20 pb-[15vw] pt-[10vw]">
-                <div className="w-full md:w-[50%] text-center md:text-left flex flex-col items-center md:items-start justify-start space-y-1">
-                  <h1 className="text-[5vw] leading-none font-semibold text-[#0C0D0D] font-[Fira Sans Extra Condensed]">
-                    {contact.designation.toUpperCase()}
-                  </h1>
-                  <p className="text-[3vw] md:text-[2vw] leading-relaxed text-[#565656] font-[Familjen Grotesk]">
-                    {contact.name} <br /> {contact.department}
-                  </p>
-                  <p className="text-sm md:text-base leading-relaxed text-[#565656] font-[Familjen Grotesk]">
-                    {contact.description}
-                  </p>
-                  <div className="pt-[2vw] flex gap-[5vw] text-black text-[10vw] md:text-[3vw]">
-                    {contact.socialLinks.phoneNo && (
-                      <a href={`tel:${contact.socialLinks.phoneNo}`}>
-                        <FaPhone className="cursor-pointer hover:text-[#141414]" />
-                      </a>
-                    )}
-                    {contact.socialLinks.mailId && (
-                      <a href={`mailto:${contact.socialLinks.mailId}`}>
-                        <MdMail className="cursor-pointer hover:text-[#141414]" />
-                      </a>
-                    )}
-                    {contact.socialLinks.linkedin && (
-                      <a
-                        href={contact.socialLinks.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <IoLogoLinkedin className="cursor-pointer hover:text-[#141414]" />
-                      </a>
-                    )}
-                  </div>
+        {/* Main Content */}
+        <div className="bg-gradient-to-br from-gray-50 to-blue-50 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {contacts?.sort((a, b) => a?.order - b?.order).map((contact, index) => (
+              <section className="mb-20" key={contact.id}>
+                <SectionHeader
+                  title={contact.title}
+                  icon={FaUsers}
+                  description={contact.description}
+                />
+                <div className={` gap-8 mx-auto ${
+                  (contact?.members?.length || 0) <= 4 ? 'flex flex-row justify-center flex-wrap' : 
+                  'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+                }`}>
+                  {(contact?.members || []).slice().sort((a, b) => (a?.order || 0) - (b?.order || 0)).map((member) => (
+                    <ContactCard
+                      key={member.id}
+                      contact={member}
+                      isLarge={(contact?.order || 0) <= 1 && (member?.order || 0) <= 3}
+                    />
+                  ))}
                 </div>
-
-                <div className="w-full md:w-[50%] flex items-center justify-center">
-                  <img
-                    src={contact.image}
-                    alt={contact.name}
-                    className="w-[70%] object-cover"
-                  />
-                </div>
-              </div>
-            )}
-            bg={index % 2 === 0 ? "#F5F5F5" : "#7BB9C4"}
-            top="-200px"
-          />
-        ))}
+              </section>
+            ))}
+          </div>
+        </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 

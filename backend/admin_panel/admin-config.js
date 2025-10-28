@@ -6,6 +6,7 @@ dotenv.config();
 import AboutUs from "../models/aboutUs.js";
 import Contacts from "../models/contact.js";
 import {eventResourceOptions} from "./eventResource.js";
+import {contactResourceOptions} from "./contactResource.js";
 import Facilities from "../models/facilities.js";
 import TeamMember from "../models/teamMember.js";
 import clubMain from "../models/clubMain.js";
@@ -37,7 +38,7 @@ const authenticate = async (email, password) => {
 };
 
 const adminOptions = {
-  resources: [AboutUs, Contacts, eventResourceOptions, Facilities, TeamMember, clubMain,homepage],
+  resources: [AboutUs, contactResourceOptions, eventResourceOptions, Facilities, TeamMember, clubMain, homepage],
   rootPath: ADMINPANELROOT,
   loginPath: ADMINPANELROOT + "/login",
   logoutPath: ADMINPANELROOT + "/logout",
