@@ -5,6 +5,7 @@ import AllClubsPage from "./pages/AllClubsPage";
 import EachClubPage from "./pages/ClubPage";
 import EachEventPage from "./pages/EventPage";
 import AllEventsPage from "./pages/AllEventsPage";
+import Initiatives from "./pages/Initiatives";
 
 const BASEURL = process.env.REACT_APP_BASEURL||"/cultural-board";
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/club/:name" element={<EachClubPage />} />
           <Route path="/events" element={<AllEventsPage />} />
           <Route path="/event/:id" element={<EachEventPage />} />
+          <Route path="/initiatives" element={<Initiatives />} />
         </Route>
       </Routes>
     </BrowserRouter>

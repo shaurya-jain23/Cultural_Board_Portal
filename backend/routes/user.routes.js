@@ -3,7 +3,7 @@ import { getHomePageData } from '../controllers/homePage.controller.js'; // Impo
 import { getAllClub, getClubById } from '../controllers/club.controller.js';
 import { getContacts } from '../controllers/contact.controller.js';
 import { getAllEvents, getEventById } from '../controllers/event.controller.js';
-
+import { getAllInitiatives, getInitiativeById } from '../controllers/initiatives.controller.js';
 const router = express.Router();
 
 // Define the route and use the controller function
@@ -16,5 +16,7 @@ router.get('/event/:id', getEventById);
 router.get('/contacts', getContacts);
 router.get('/allclubs' , getAllClub);
 router.get('/allevents' , getAllEvents);
+router.get('/allinitiatives' , getAllInitiatives);
+router.get('/initiative/:name' , getInitiativeById);
 
 export default router;
