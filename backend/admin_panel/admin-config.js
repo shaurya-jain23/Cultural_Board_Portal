@@ -1,16 +1,16 @@
-import AdminJS from "adminjs";
 import AdminJSExpress from "@adminjs/express";
 import * as AdminJSMongoose from "@adminjs/mongoose";
+import AdminJS from "adminjs";
 import dotenv from "dotenv";
-dotenv.config();
 import AboutUs from "../models/aboutUs.js";
-import Contacts from "../models/contact.js";
-import {eventResourceOptions} from "./eventResource.js";
-import {contactResourceOptions} from "./contactResource.js";
-import Facilities from "../models/facilities.js";
-import TeamMember from "../models/teamMember.js";
 import clubMain from "../models/clubMain.js";
+import Facilities from "../models/facilities.js";
 import homepage from "../models/general.js";
+import TeamMember from "../models/teamMember.js";
+import { contactResourceOptions } from "./contactResource.js";
+import { eventResourceOptions } from "./eventResource.js";
+import { initiativesResourceOptions } from "./initiativesResource.js";
+dotenv.config();
 
 const API_BASE = process.env.NODE_ENV === 'development' ?  (process.env.API_BASE || '') : '/cultural-board/api';
 const ADMINPANELROOT = `${API_BASE}/admin`;
@@ -38,7 +38,7 @@ const authenticate = async (email, password) => {
 };
 
 const adminOptions = {
-  resources: [AboutUs, contactResourceOptions, eventResourceOptions, Facilities, TeamMember, clubMain, homepage],
+  resources: [AboutUs, contactResourceOptions, eventResourceOptions, initiativesResourceOptions, Facilities, TeamMember, clubMain, homepage],
   rootPath: ADMINPANELROOT,
   loginPath: ADMINPANELROOT + "/login",
   logoutPath: ADMINPANELROOT + "/logout",
@@ -92,3 +92,4 @@ try {
 }
 
 export { admin, adminRouter };
+
