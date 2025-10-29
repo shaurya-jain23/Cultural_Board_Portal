@@ -83,6 +83,12 @@ function Header() {
               Clubs
             </Link>
             <Link
+              to="/initiatives"
+              className="text-gray-700 hover:text-[#7BB9C4] hover:underline underline-offset-4 transition-all duration-200 font-medium"
+            >
+              Initiatives
+            </Link>
+            <Link
               to="/events"
               className="text-gray-700 hover:text-[#7BB9C4] hover:underline underline-offset-4 transition-all duration-200 font-medium"
             >

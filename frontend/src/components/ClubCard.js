@@ -19,13 +19,15 @@ function ClubCard({ index, clubData }) {
     >
       <img
         src={clubData.img}
-        alt="Club Image"
-        className="h-[40vw] md:h-[20vw]"
+        alt={clubData.name}
+        className="h-[40vw] md:h-[20vw] rounded-3xl"
       />
-      <p className="absolute top-1 left-2 font-semibold text-[2vw]">
-        {clubData.name}
+      <p className="absolute bottom-3 left-3">
+        <span className="bg-black/60 text-white px-3 py-1 rounded-md font-semibold text-[2.5vw] md:text-[1.2vw] leading-none backdrop-blur-sm">
+          {clubData.name}
+        </span>
       </p>
-      <p className="absolute bottom-0 md:-bottom-2 right-2 font-semibold text-[4vw]">
+      <p className="absolute bottom-3 right-3 font-semibold text-[4vw] md:text-[1.8vw] text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
         {index < 9 ? `0${index + 1}` : index + 1}
       </p>
     </div>

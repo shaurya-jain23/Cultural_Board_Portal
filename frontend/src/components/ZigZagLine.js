@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function ZigZagLine() {
+function ZigZagLine({ className = "" }) {
   // No. of lines
   const lines = Array.from({ length: 25 });
   const [height, setHeight] = useState(0);
@@ -22,7 +22,7 @@ function ZigZagLine() {
 
   return (
     <div
-      className="absolute w-[113%] md:w-[225%] flex flex-col items-center gap-[25vw] -z-9 overflow-hidden"
+      className={`absolute w-[113%] md:w-[225%] flex flex-col items-center gap-[25vw] -z-9 overflow-hidden max-[425px]:hidden ${className}`}
       style={{ height: `${height}px` }}
     >
       {lines.map((_, index) => {
