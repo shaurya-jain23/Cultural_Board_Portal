@@ -74,15 +74,15 @@ function EachClubPage() {
       <Header />
       <div className="pt-20 overflow-hidden font-poppins flex flex-col">
         <div
-           className="relative z-[10] w-full h-[865px] bg-top bg-cover bg-no-repeat flex flex-col items-center justify-center gap-5 text-gray-200"
+           className="relative z-[10] w-full h-[865px] bg-top bg-cover bg-no-repeat flex flex-col items-center justify-center gap-5 text-gray-200 before:content-[''] before:absolute before:inset-0 before:bg-black/40 before:z-[-1]"
           style={{ backgroundImage: `url(${clubData.img})` }}
         >
-          <p className="text-4xl md:text-7xl font-semibold tracking-tight text-center">
-            {clubData.name} CLUB
-          </p>
-          <p className="text-sm sm:text-base md:text-lg tracking-tight text-center">
-            {clubData.aboutDesc}
-          </p>
+         <p className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-center text-white leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+          {clubData.name}
+        </p>
+        <p className="max-w-[900px] px-4 text-sm sm:text-base md:text-lg lg:text-2xl font-medium tracking-tight text-center text-white/90 leading-snug drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
+          {clubData.aboutDesc}
+        </p>
         </div>
         <div className="w-full flex items-center justify-center px-2 pt-[6vw] pb-[37vw] sm:pb-[20vw] md:[5vw] bg-[#F5F5F5] text-center">
           <div className="w-full flex flex-col-reverse md:flex-row gap-2 md:justify-between md:items-start px-10 md:px-20">
@@ -100,10 +100,10 @@ function EachClubPage() {
               />
             </ScrollAnimation>
             <div className="w-full md:w-[50%] text-center md:text-left flex flex-col items-center md:items-start justify-start space-y-1">
-              <h1 className="text-[6vw] leading-none font-semibold text-[#0C0D0D] font-[Fira Sans Extra Condensed]">
+              <h1 className="text-[8vw] md:text-[3vw] font-bold text-[#0C0D0D] tracking-tight">
                 ABOUT US
               </h1>
-              <p className="text-[3vw] md:text-[2vw] leading-relaxed text-[#565656] font-[Familjen Grotesk] list-disc">
+              <p className="text-[4vw] md:text-[1.4vw] text-[#3a3a3a] leading-relaxed font-light">
                 {clubData?.aboutDesc}
               </p>
             </div>
@@ -113,10 +113,10 @@ function EachClubPage() {
         <RoundedDiv
           Element={() => <PastEventsAndAcheivementsSection clubData={clubData} />}
           bg="#F5F5F5"
-          top="-200px"
+          top="-100px"
         />
-        <RoundedDiv Element={() => <GallerySection clubData={clubData} />} bg="#7BB9C4" top="-300px" />
-        <RoundedDiv Element={() => <TeamLeadersSection clubData={clubData} />} bg="#F5F5F5" top="-400px" />
+        <RoundedDiv Element={() => <GallerySection clubData={clubData} />} bg="#7BB9C4" top="-100px" />
+        <RoundedDiv Element={() => <TeamLeadersSection clubData={clubData} />} bg="#F5F5F5" top="-100px" />
       </div>
       <Footer />
     </div>
@@ -126,17 +126,17 @@ function EachClubPage() {
 const RulesAndGuidelinesSection = ({ clubData }) => {
   const scrollDirection = useScrollDirection();
   return (
-    <div className="w-full flex flex-col md:flex-row md:justify-between md:items-start px-10 md:px-20 pb-[50vw] sm:pb-[35vw] md:pb-[15vw] lg:pb-[10vw]">
-      <div className="w-full md:w-[50%] text-center md:text-left flex flex-col items-center md:items-start justify-start space-y-1">
-        <h1 className="text-[6vw] leading-none font-semibold text-[#0C0D0D] font-[Fira Sans Extra Condensed]">
+    <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start px-6 sm:px-12 md:px-20 pb-[20vw] md:pb-[10vw] lg:pb-[8vw]">
+      <div className="w-full md:w-[50%] text-center md:text-left space-y-4">
+        <h1 className="text-[8vw] md:text-[3vw] font-bold text-[#0C0D0D] tracking-tight">
           RULES AND GUIDELINES
         </h1>
-        <p className="text-[3vw] md:text-[2vw] leading-relaxed text-[#565656] font-[Familjen Grotesk] list-disc">
+        <p className="text-[4vw] md:text-[1.4vw] text-[#3a3a3a] leading-relaxed font-light">
           {clubData.rules}
         </p>
       </div>
       <ScrollAnimation
-        className="w-full md:w-[50%] flex items-center justify-center"
+        className="w-full md:w-[45%] flex items-center justify-center mt-8 md:mt-0"
         animateIn={scrollDirection === "up" ? "slideInDown" : "slideInUp"}
         animateOut={scrollDirection === "up" ? "slideOutDown" : "slideOutUp"}
         animateOnce={true}
@@ -146,8 +146,8 @@ const RulesAndGuidelinesSection = ({ clubData }) => {
       >
         <img
           src={clubData?.rulesimg}
-          alt="Sports activity"
-          className="w-[70%] object-cover"
+          alt="Rules visual"
+          className="w-[80%] md:w-[70%] rounded-2xl shadow-lg hover:scale-105 transition-transform duration-500 object-cover"
         />
       </ScrollAnimation>
     </div>
@@ -157,59 +157,63 @@ const RulesAndGuidelinesSection = ({ clubData }) => {
 const PastEventsAndAcheivementsSection = ({ clubData }) => {
   const scrollDirection = useScrollDirection();
   return (
-    <div className="space-y-8 pb-[83vw] xs:pb-[60vw] sm:pb-[40vw] md:pb-[15vw] lg:pb-[13vw]">
-      <div className="w-full flex flex-col md:flex-row md:justify-between md:items-start px-10 md:px-20 md:py-20">
-        <div className="w-full md:w-[50%] text-center md:text-left flex flex-col items-center md:items-start justify-start space-y-1">
-          <h1 className="text-[6vw] leading-none font-semibold text-[#0C0D0D] font-[Fira Sans Extra Condensed]">
+    <div className="space-y-20 pb-[40vw] sm:pb-[25vw] md:pb-[20vw]">
+      {/* Past Events */}
+      <div className="w-full flex flex-col md:flex-row justify-between items-center px-6 sm:px-12 md:px-20">
+        <div className="w-full md:w-[50%] text-center md:text-left space-y-4">
+          <h1 className="text-[8vw] md:text-[3vw] font-bold text-[#0C0D0D] tracking-tight">
             PAST EVENTS
           </h1>
-         {clubData?.pastEvents.map((event,index)=>(
-            <p className="text-[3vw] md:text-[2vw] leading-relaxed text-[#565656] font-[Familjen Grotesk] list-disc">
-              {event}
-          </p>
-         ))}
+          <ul className="list-disc text-left ml-6 text-[4vw] md:text-[1.4vw] text-[#3a3a3a] leading-relaxed font-light">
+            {clubData?.pastEvents.map((event, index) => (
+              <li key={index}>{event}</li>
+            ))}
+          </ul>
         </div>
-              <ScrollAnimation
-        className="w-full md:w-[50%] flex items-center justify-center"
-        animateIn={scrollDirection === "up" ? "slideInDown" : "slideInUp"}
-        animateOut={scrollDirection === "up" ? "slideOutDown" : "slideOutUp"}
-        animateOnce={true}
-        initiallyVisible={true}
-        animatePreScroll={true}
-        offset={0}
-      >
-        <img
-          src={clubData?.rulesimg}
-          alt="Sports activity"
-          className="w-[70%] object-cover"
-        />
-      </ScrollAnimation>
+        <ScrollAnimation
+          className="w-full md:w-[45%] flex items-center justify-center mt-8 md:mt-0"
+          animateIn={scrollDirection === "up" ? "slideInDown" : "slideInUp"}
+          animateOut={scrollDirection === "up" ? "slideOutDown" : "slideOutUp"}
+          animateOnce={true}
+          initiallyVisible={true}
+          animatePreScroll={true}
+          offset={0}
+        >
+          <img
+            src={clubData?.pastEventsImg}
+            alt="Past events"
+            className="w-[80%] md:w-[70%] rounded-2xl shadow-lg hover:scale-105 transition-transform duration-500 object-cover"
+          />
+        </ScrollAnimation>
       </div>
-      <div className="w-full flex flex-col-reverse md:flex-row md:justify-between md:items-start px-10 md:px-20 md:py-20">
-              <ScrollAnimation
-        className="w-full md:w-[50%] flex items-center justify-center"
-        animateIn={scrollDirection === "up" ? "slideInDown" : "slideInUp"}
-        animateOut={scrollDirection === "up" ? "slideOutDown" : "slideOutUp"}
-        animateOnce={true}
-        initiallyVisible={true}
-        animatePreScroll={true}
-        offset={0}
-      >
-        <img
-          src={clubData?.rulesimg}
-          alt="Sports activity"
-          className="w-[70%] object-cover"
-        />
-      </ScrollAnimation>
-        <div className="w-full md:w-[50%] text-center md:text-left flex flex-col items-center md:items-start justify-start space-y-1">
-          <h1 className="text-[6vw] leading-none font-semibold text-[#0C0D0D] font-[Fira Sans Extra Condensed]">
+
+      {/* Achievements */}
+      <div className="w-full flex flex-col-reverse md:flex-row justify-between items-center px-6 sm:px-12 md:px-20">
+        <ScrollAnimation
+          className="w-full md:w-[45%] flex items-center justify-center mt-8 md:mt-0"
+          animateIn={scrollDirection === "up" ? "slideInDown" : "slideInUp"}
+          animateOut={scrollDirection === "up" ? "slideOutDown" : "slideOutUp"}
+          animateOnce={true}
+          initiallyVisible={true}
+          animatePreScroll={true}
+          offset={0}
+        >
+          <img
+            src={clubData?.achievementsImg}
+            alt="Achievements"
+            className="w-[80%] md:w-[70%] rounded-2xl shadow-lg hover:scale-105 transition-transform duration-500 object-cover"
+          />
+        </ScrollAnimation>
+
+        <div className="w-full md:w-[50%] text-center md:text-left space-y-4">
+          <h1 className="text-[8vw] md:text-[3vw] font-bold text-[#0C0D0D] tracking-tight">
             ACHIEVEMENTS
           </h1>
-          {clubData?.achievements.map((event,index)=>(
-            <p className="text-[3vw] md:text-[2vw] leading-relaxed text-[#565656] font-[Familjen Grotesk] list-disc">
-              {event}
-          </p>
-          ))}
+          <ul className="list-disc text-left ml-6 text-[4vw] md:text-[1.4vw] text-[#3a3a3a] leading-relaxed font-light">
+            {clubData?.achievements.map((achievement, index) => (
+              <li key={index}>{achievement}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
@@ -218,33 +222,83 @@ const PastEventsAndAcheivementsSection = ({ clubData }) => {
 
 const GallerySection = ({ clubData }) => {
   return (
-    <div className="w-full flex flex-col md:flex-row md:justify-between md:items-start px-10 md:px-20 pb-[115vw] xs:pb-[80vw] sm:pb-[57vw] md:pb-[40vw] lg:pb-[30vw] xl:pb-[22vw]">
-      <div className="w-full md:w-[50%] text-center md:text-left flex flex-col items-center md:items-start justify-start space-y-1">
-        <h1 className="text-[6vw] leading-none font-semibold text-[#0C0D0D] font-[Fira Sans Extra Condensed]">
+    <div className="w-full flex flex-col md:flex-row justify-between items-start px-6 sm:px-12 md:px-20 pb-[20vw] md:pb-[10vw] lg:pb-[8vw]">
+      {/* Left: Text Section */}
+      <div className="w-full md:w-[50%] flex flex-col justify-center text-center md:text-left space-y-4 md:space-y-6">
+        <h1 className="text-[8vw] md:text-[3vw] font-extrabold text-[#0C0D0D] tracking-tight font-[Fira Sans Extra Condensed]">
           GALLERY
         </h1>
-        <p className="text-[3vw] md:text-[2vw] leading-relaxed text-[#565656] font-[Familjen Grotesk] list-disc">
-          {/* {clubData.rulesSection.text} */}
+        <p className="text-[4vw] md:text-[1.5vw] leading-relaxed text-[#1a1a1a] opacity-90 font-[Familjen Grotesk] max-w-[90%] md:max-w-[80%] mx-auto md:mx-0">
+          A glimpse of our club’s most memorable moments and performances.
         </p>
       </div>
-      <div className="relative z-[10] w-full md:w-[50%] flex items-center justify-center">
+
+      {/* Right: Carousel Section */}
+      <ScrollAnimation
+  className="w-full md:w-[45%] flex items-center justify-center mt-10 md:mt-0"
+  animateIn="fadeIn"
+  animateOnce={true}
+  initiallyVisible={true}
+  animatePreScroll={true}
+  offset={0}
+>
+  <div className="w-[85%] md:w-[70%] rounded-[2rem] overflow-hidden shadow-xl">
+    <Carousel
+      autoPlay
+      interval={2500}
+      infiniteLoop
+      showThumbs={false}
+      showIndicators={false}
+      emulateTouch
+      stopOnHover
+      dynamicHeight={true}
+      showStatus={true}
+    >
+      {clubData?.galleryImages.map((image, index) => (
+        <img
+          key={index}
+          src={image}
+          className="w-full h-[60vw] md:h-[28vw] object-cover transition-transform duration-700 ease-in-out hover:scale-105"
+        />
+      ))}
+    </Carousel>
+  </div>
+</ScrollAnimation>
+
+    </div>
+  );
+};
+
+
+
+const TeamLeadersSection = ({ clubData }) => {
+  return (
+    <div className="w-full flex flex-col md:flex-row justify-between items-center px-6 sm:px-12 md:px-20 py-[0vw]">
+      <div className="w-full md:w-[50%] text-center md:text-left space-y-4">
+        <h1 className="text-[8vw] md:text-[3vw] font-bold text-[#0C0D0D] tracking-tight">
+          TEAM LEADERS
+        </h1>
+        <p className="text-[4vw] md:text-[1.4vw] text-[#3a3a3a] leading-relaxed font-light">
+          Meet the passionate individuals who lead and inspire the team.
+        </p>
+      </div>
+      <div className="w-full md:w-[45%] flex items-center justify-center mt-8 md:mt-0">
         <Carousel
-          className="w-[70%] min-h-[500px]"
-          autoPlay={true}
-          interval={2000}
-          infiniteLoop={true}
+          className="w-[85%] md:w-[70%] rounded-2xl shadow-lg overflow-hidden"
+          autoPlay
+          interval={2500}
+          infiniteLoop
           showThumbs={false}
           showIndicators={false}
-          emulateTouch={true}
-          stopOnHover={true}
-          transitionTime={1000}
+          emulateTouch
+          stopOnHover
         >
-          {clubData?.galleryImages.map((image, index) => (
+          {clubData?.leaderImages.map((image, index) => (
             <img
               key={index}
               src={image}
-              alt={`Sports activity ${index + 1}`}
-              className="w-[70%] h-[500px] object-cover"
+              alt={`Leader ${index + 1}`}
+              className="w-full h-[400px] md:h-[500px] object-cover rounded-2xl hover:scale-105 transition-transform duration-700"
             />
           ))}
         </Carousel>
@@ -253,41 +307,5 @@ const GallerySection = ({ clubData }) => {
   );
 };
 
-const TeamLeadersSection = ({ clubData }) => {
-  return (
-    <div className="w-full flex flex-col md:flex-row md:justify-between md:items-start px-10 md:px-20">
-      <div className="w-full md:w-[50%] text-center md:text-left flex flex-col items-center md:items-start justify-start space-y-1">
-        <h1 className="text-[6vw] leading-none font-semibold text-[#0C0D0D] font-[Fira Sans Extra Condensed]">
-          TEAM LEADERS
-        </h1>
-        <p className="text-[3vw] md:text-[2vw] leading-relaxed text-[#565656] font-[Familjen Grotesk] list-disc">
-          {/* {clubData.rulesSection.text} */}
-        </p>
-      </div>
-      <div className="relative z-[1] w-full md:w-[50%] flex items-center justify-center">
-        <Carousel
-          className="w-[70%]  min-h-[500px]"
-          autoPlay={true}
-          interval={2000}
-          infiniteLoop={true}
-          showThumbs={false}
-          showIndicators={false}
-          emulateTouch={true}
-          stopOnHover={true}
-          transitionTime={1000}
-        >
-          {clubData?.leaderImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Sports activity ${index + 1}`}
-              className="w-[70%] h-[500px] object-cover"
-            />
-          ))}
-        </Carousel>
-      </div>
-    </div>
-  );
-};
 
 export default EachClubPage;
