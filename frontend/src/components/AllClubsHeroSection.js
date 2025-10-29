@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ZigZagLine from "./ZigZagLine";
-import ClubCard from "./ClubCard";
+import React, { useEffect, useState } from "react";
 import ScrollAnimation from "react-animate-on-scroll";
+import ClubCard from "./ClubCard";
 import RoundedDiv from "./RoundedDiv";
-import clubImg from "../assets/images/clubs/wide.png";
+import ZigZagLine from "./ZigZagLine";
 function AllClubsHeroSection() {
-  const BACKEND_BASE_URL=process.env.BACKEND_BASE_URL;
+
   const [clubsData, setClubsData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [heroimg , setheroimg] = useState(null)
-  useEffect(() => {
+  const [heroimg, setheroimg] = useState();
+
+   useEffect(() => {
     console.log(process.env.REACT_APP_API_BASE_URL)
     axios
-      .get(`${process.env.REACT_APP_API_BASE_URL}/allclubs`) // Replace with your actual API route
+      .get(`${process.env.REACT_APP_API_BASE_URL}/allclubs`)
       .then((response) => {
         setClubsData(response.data.club);
-        setheroimg(response.data.homepage[0].clubheroimg) // Ensure API response structure matches expected format
+        setheroimg(response.data.homepage[0].clubheroimg)
         setLoading(false);
         console.log(response.data.club);
       })
@@ -26,18 +26,18 @@ function AllClubsHeroSection() {
         setError("Failed to load clubs.");
         setLoading(false);
       });
-  }, []);
-
+      console.log(clubsData);
+  }, []); 
   return (
     <div className="overflow-x-hidden font-poppins flex flex-col text-gray-200 bg-[#F5F5F5]">
       <div
-        className="w-full h-[865px] bg-top bg-cover bg-no-repeat flex flex-col items-center justify-center gap-5 text-gray-200 z-1"
+        className="w-full h-[865px] bg-top bg-cover bg-no-repeat flex flex-col items-center justify-start pt-24 sm:pt-28 md:pt-40 lg:pt-48 gap-6 text-gray-200 z-1"
         style={{ backgroundImage:`url(${heroimg})`}}
       >
-        <p className="text-4xl md:text-7xl font-semibold tracking-tight text-center">
+        <p className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-center text-white leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
           LOREM IPSUM
         </p>
-        <p className="text-sm sm:text-base md:text-lg tracking-tight text-center">
+        <p className="max-w-[900px] px-4 text-sm sm:text-base md:text-lg lg:text-2xl font-medium tracking-tight text-center text-white/90 leading-snug drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
           Empowering athletes something something content.
         </p>
       </div>
@@ -60,7 +60,7 @@ function AllClubsHeroSection() {
                   <ClubCard index={index} clubData={clubData} />
                 </ScrollAnimation>
               ))}
-              <ZigZagLine />
+              <ZigZagLine className="top-[20vw] md:top-[10vw]" />
             </div>
           )}
           top="-100px"

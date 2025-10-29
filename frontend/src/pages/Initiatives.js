@@ -5,56 +5,13 @@ import InitiativeCard from "../components/InitiativeCard";
 import { useAllInitiativesPageData } from '../hooks/useAllInitiativesPageData';
 
 // Mock Data as fallback
-const mockData = [
-  {
-    name: "Alcheringa",
-    description: "Alcheringa is the annual cultural festival of IIT Guwahati, celebrating creativity, talent, and cultural diversity with performances, competitions, and showcases from across India.",
-    image: "https://via.placeholder.com/600x400?text=Alcheringa",
-    link: "/alcheringa",
-    color: "#7BB9C4",
-  },
-  {
-    name: "SPICMACAY",
-    description: "The Society for the Promotion of Indian Classical Music and Culture Amongst Youth (SPICMACAY) promotes Indian classical arts through performances and workshops.",
-    image: "https://via.placeholder.com/600x400?text=SPICMACAY",
-    link: "/spicmacay",
-    color: "#6aa8b3",
-  },
-  {
-    name: "CBS (Cultural Board Society)",
-    description: "CBS serves as the umbrella organization coordinating all cultural activities, events, and clubs within IIT Guwahati, fostering a vibrant cultural ecosystem.",
-    image: "https://via.placeholder.com/600x400?text=CBS",
-    link: "/cbs",
-    color: "#7BB9C4",
-  },
-  {
-    name: "Roz-Roz Magazine",
-    description: "Roz-Roz Magazine is the monthly cultural publication featuring articles, interviews, events coverage, and creative contributions from the student community.",
-    image: "https://via.placeholder.com/600x400?text=Roz-Roz+Magazine",
-    link: "/rozroz",
-    color: "#6aa8b3",
-  },
-  {
-    name: "Dance Society",
-    description: "Promoting various dance forms through workshops, competitions, and performances, bringing rhythm and movement to campus life.",
-    image: "https://via.placeholder.com/600x400?text=Dance+Society",
-    link: "/dance-society",
-    color: "#7BB9C4",
-  },
-  {
-    name: "Music Society",
-    description: "Nurturing musical talents across genres, organizing concerts, workshops, and jam sessions to create a harmonious campus environment.",
-    image: "https://via.placeholder.com/600x400?text=Music+Society",
-    link: "/music-society",
-    color: "#6aa8b3",
-  },
-];
+
 
 const Initiatives = () => {
   const [visibleSections, setVisibleSections] = useState({});
   const sectionRefs = useRef([]);
   const {data,error, loading} = useAllInitiativesPageData();
-  const initiatives = data?.initiatives?.length > 0 ? data.initiatives : mockData;
+  const initiatives = data.initiatives;
 
   useEffect(() => {
     const observer = new IntersectionObserver(

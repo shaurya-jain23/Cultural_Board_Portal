@@ -13,7 +13,7 @@ function RoundedDiv({
         marginTop: top,
         backgroundColor: bg,
       }}
-      className="relative left-[50%] translate-x-[-50%] w-[170vw] sm:w-[150vw] md:w-[140vw] lg:w-[120vw] px-[35vw] sm:px-[25vw] md:px-[20vw] lg:px-[10vw] overflow-hidden pt-[35px] sm:pt-[50px] md:pt-[75px] lg:pt-[130px] pb-[50px] md:pb-[100px] flex flex-col items-center"
+      className="relative z-0 left-[50%] translate-x-[-50%] w-[170vw] sm:w-[150vw] md:w-[140vw] lg:w-[120vw] px-[35vw] sm:px-[25vw] md:px-[20vw] lg:px-[10vw] overflow-hidden pt-[35px] sm:pt-[50px] md:pt-[75px] lg:pt-[130px] pb-[50px] md:pb-[100px] flex flex-col items-center"
     >
       <Element />
     </div>
