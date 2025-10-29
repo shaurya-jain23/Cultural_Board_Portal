@@ -4,11 +4,12 @@ import { useHomePageData } from "../hooks/useHomePageData";
 function HeroSection() {
   const roundedStyle = useRoundedStyle();
   const { data } = useHomePageData();
+
   // console.log("data", data);
-
-  // if (loading) return <div>Loading...</div>; // Display loading state
-  // if (error) return <div>Error fetching homepage data.</div>; // Handle errors
-
+  // if (loading) return <div>Loading...</div>;
+  // Display loading state
+  // if (error) return <div>Error fetching homepage data.</div>;
+  //  Handle errors
   const teamMember = data ? data.teamMember : [];
 
   return (
@@ -17,22 +18,17 @@ function HeroSection() {
         className="w-full h-[865px] bg-top bg-cover bg-no-repeat flex flex-col items-center justify-center gap-5 text-gray-200 relative z-0"
         style={{ backgroundImage: `url(${data?.homepage[0]?.heroimage})` }}
       >
-       <p className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-center text-white leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+        <p className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-center text-white leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
           CULTURAL BOARD IIT GUWAHATI
         </p>
-       
       </div>
-      {/* 2nd div */}
+
       <div
         style={roundedStyle}
         className="top-[-100px] w-full min-h-[975px] h-auto flex items-center justify-center bg-[#F5F5F5] text-center py-16 md:py-0"
       >
-        {/* 2. LAYOUT: Added padding for mobile (px-6) */}
         <div className="max-w-6xl w-full flex flex-col md:flex-row items-center gap-12 md:gap-8 px-6 md:px-8">
-          {/* Image Section */}
-          {/* 2. LAYOUT: Made image container responsive (w-full, max-w-md) and set responsive height */}
           <div className="w-full max-w-md md:max-w-none md:basis-1/2 h-[350px] md:h-[470px]">
-            {/* 2. STYLING: Added rounded corners and shadow */}
             <img
               src={data?.aboutData[0]?.image}
               alt="Sports activity"
@@ -40,40 +36,29 @@ function HeroSection() {
             />
           </div>
 
-          {/* Text Section */}
-          {/* 2. LAYOUT: Centered text on mobile, left-align on desktop */}
           <div className="text-center md:text-left basis-1/2">
-            {/* Title */}
             <h1 className="text-[#0C0D0D] font-semibold text-6xl md:text-8xl lg:text-[96px] leading-none font-[Fira Sans Extra Condensed]">
               ABOUT US<span className="text-[#7BB9C4]">.</span>
             </h1>
-
-            {/* Paragraph */}
             <p className="text-[#565656] text-base leading-relaxed font-[Familjen Grotesk] mt-4">
               {data?.aboutData[0]?.description}
             </p>
           </div>
         </div>
       </div>
-{/* Team Members Section */}
-    {/* Team Members Section */}
+
       <div
         className="top-[-20rem] bg-[#7BB9C4] w-full flex flex-col px-10 md:px-20 pb-[115vw] xs:pb-[80vw] sm:pb-[57vw] md:pb-[40vw] lg:pb-[30vw] xl:pb-[22vw]"
         style={roundedStyle}
       >
-        {/* --- DESKTOP LAYOUT (lg+) --- */}
-        {/* This entire block is hidden by default, visible at 'lg' */}
         <div className="hidden lg:block w-full">
-          {/* Top Row: Title + First 3 Members */}
           <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-start">
-            {/* Text Section */}
             <div className="lg:ml-10 mt-20 w-full lg:w-[30%] text-center lg:text-left flex flex-col items-center lg:items-start space-y-2">
               <h1 className="mb-10 text-5xl md:text-7xl leading-none font-semibold text-[#0C0D0D] font-[Fira Sans Extra Condensed]">
                 Team Members<span className="text-[#fff]">.</span>
               </h1>
             </div>
 
-            {/* Image Section (First 3) - DESKTOP */}
             <div className="mt-20 mb-10 grid grid-cols-3 gap-8 justify-items-center overflow-hidden">
               {teamMember &&
                 teamMember.slice(0, 3).map((member, index) => (
@@ -88,7 +73,6 @@ function HeroSection() {
             </div>
           </div>
 
-          {/* Bottom Grid: Rest of the Members - DESKTOP */}
           <div className="w-full mb-[10rem] grid grid-cols-1 lg:grid-cols-5 gap-4 justify-items-center">
             {teamMember &&
               teamMember.slice(3).map((member, index) => (
@@ -103,17 +87,13 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* --- MOBILE & TABLET LAYOUT (<lg) --- */}
-        {/* This block is visible by default, hidden at 'lg' */}
         <div className="block lg:hidden w-full">
-          {/* Text Section (Centered for mobile/tablet) */}
           <div className="mt-20 w-full text-center flex flex-col items-center space-y-2">
             <h1 className="mb-10 text-5xl md:text-7xl leading-none font-semibold text-[#0C0D0D] font-[Fira Sans Extra Condensed]">
               Team Members<span className="text-[#fff]">.</span>
             </h1>
           </div>
 
-          {/* For Mobile & Tablet (All members in one scroller) */}
           <div className="mt-10 mb-[10rem] w-full h-[330px] gap-4 flex overflow-x-scroll scrollbar-thin px-4">
             {teamMember &&
               teamMember.map((member, index) => (
@@ -128,14 +108,12 @@ function HeroSection() {
           </div>
         </div>
       </div>
-      {/* {Last div} */}
+
       <div
         className="top-[-25rem] space-y-8 pb-[83vw] xs:pb-[60vw] sm:pb-[40vw] md:pb-[15vw] lg:pb-[13vw] hidden md:block"
         style={roundedStyle}
       >
-       <div className="mt-[10rem] w-full flex flex-col md:flex-row md:justify-between md:items-start px-10 md:px-20 md:py-20 relative">
-      
-          {/* Image Section */}
+        <div className="mt-[10rem] w-full flex flex-col md:flex-row md:justify-between md:items-start px-10 md:px-20 md:py-20 relative">
           <div className="z-10 w-full md:w-[50%] flex items-center justify-center">
             <img
               src={data?.homepage[0]?.chairmanimgurl}
@@ -144,10 +122,7 @@ function HeroSection() {
             />
           </div>
 
-          {/* Text Section */}
-          {/* 3. STYLING: Applied message card styling */}
           <div className="w-full md:w-[50%] text-center md:text-left flex flex-col items-center md:items-start justify-start space-y-3">
-            {/* Title */}
             <h1 className="text-5xl lg:text-7xl leading-none font-semibold text-[#0C0D0D] font-[Fira Sans Extra Condensed]">
               CHAIRMAN<span className="text-[#7BB9C4]">.</span>
             </h1>
@@ -158,7 +133,6 @@ function HeroSection() {
               {data?.homepage[0]?.chairmandescription}
             </p>
 
-            {/* Message Card */}
             <div className="mt-6 p-6 bg-white rounded-lg shadow-lg border-l-4 border-[#7BB9C4] w-full">
               <h2 className="text-xl lg:text-2xl leading-none font-semibold text-[#565656] font-[Familjen Grotesk]">
                 Message from the Chairman-
@@ -170,12 +144,8 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Section 2 - General Secretary */}
         <div className="w-full flex flex-col md:flex-row md:justify-between md:items-start px-10 md:px-20 md:py-20 relative">
-          {/* Text Section */}
-          {/* 4. STYLING: Applied same message card styling */}
           <div className="w-full md:w-[50%] text-center md:text-left flex flex-col items-center md:items-start justify-start space-y-3">
-            {/* Title */}
             <h1 className="text-5xl lg:text-7xl leading-none font-semibold text-[#0C0D0D] font-[Fira Sans Extra Condensed]">
               GENERAL SECRETARY<span className="text-[#7BB9C4]">.</span>
             </h1>
@@ -186,7 +156,6 @@ function HeroSection() {
               {data?.homepage[0]?.gensecdescription}
             </p>
 
-            {/* Message Card */}
             <div className="mt-6 p-6 bg-white rounded-lg shadow-lg border-l-4 border-[#7BB9C4] w-full">
               <h2 className="text-xl lg:text-2xl leading-none font-semibold text-[#565656] font-[Familjen Grotesk]">
                 Message from the General Secretary-
@@ -197,7 +166,6 @@ function HeroSection() {
             </div>
           </div>
 
-          {/* Image Section */}
           <div className="z-10 w-full md:w-[50%] flex items-center justify-center">
             <img
               src={data?.homepage[0]?.gensecimg}
