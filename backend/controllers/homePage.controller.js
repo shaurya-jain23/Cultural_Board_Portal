@@ -22,3 +22,4 @@ export const getHomePageData = async (req, res) => {
     res.status(500).json({ message: 'Error fetching data', error });
   }
 };
+ 
