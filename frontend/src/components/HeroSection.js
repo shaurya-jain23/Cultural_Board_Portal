@@ -1,5 +1,6 @@
 import useRoundedStyle from "../hooks/useRoundedStyle";
 import { useHomePageData } from "../hooks/useHomePageData";
+import Ticker from './Ticker';
 
 function HeroSection() {
   const roundedStyle = useRoundedStyle();
@@ -14,6 +15,7 @@ function HeroSection() {
 
   return (
     <div className="w-full overflow-x-hidden font-poppins flex flex-col items-center">
+      <Ticker />
       <div
         className="w-full h-[865px] bg-top bg-cover bg-no-repeat flex flex-col items-center justify-center gap-5 text-gray-200 relative z-0"
         style={{ backgroundImage: `url(${data?.homepage[0]?.heroimage})` }}
