@@ -4,6 +4,7 @@ import { getAllClub, getClubById } from '../controllers/club.controller.js';
 import { getContacts } from '../controllers/contact.controller.js';
 import { getAllEvents, getEventById } from '../controllers/event.controller.js';
 import { getAllInitiatives, getInitiativeById } from '../controllers/initiatives.controller.js';
+import { getAnnouncements } from '../controllers/announcement.controller.js';
 const router = express.Router();
 
 // Define the route and use the controller function
@@ -18,5 +19,5 @@ router.get('/allclubs' , getAllClub);
 router.get('/allevents' , getAllEvents);
 router.get('/allinitiatives' , getAllInitiatives);
 router.get('/initiative/:name' , getInitiativeById);
-
+router.get('/announcements', getAnnouncements)
 export default router;
