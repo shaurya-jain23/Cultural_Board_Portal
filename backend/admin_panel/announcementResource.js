@@ -1,7 +1,7 @@
 import AdminJS from "adminjs";
 import Announcement from "../models/announcement.js";
 
-export const announcementResourceOptions = {
+const announcementResourceOptions = {
   resource: Announcement,
   options: {
     properties: {
@@ -42,3 +42,5 @@ export const announcementResourceOptions = {
     },
   },
 };
+
+export default announcementResourceOptions;

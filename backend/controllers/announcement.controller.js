@@ -15,3 +15,22 @@ export const getAnnouncements = async (req, res) => {
     return res.status(500).json({ message: 'Error fetching announcements', error });
   }
 };
+
+export const deleteAnnouncements = async (req, res) => {
+  try {
+    const { title } = req.params;
+    const deleted = Announcement.findOneAndDelete({title});
+    if (!deleted) {
+      return res.status(404).json({message: 'Announcement not found'})
+    }
+    return res.status(200).json({success: true, message: 'Deleted', data: deleted});
+
+  } catch (error) {
+    return res.status(500).json({message: 'Error deleting announcement', error});
+  }
+}
+
+export default {
+  getAnnouncements,
+  deleteAnnouncements
+}
