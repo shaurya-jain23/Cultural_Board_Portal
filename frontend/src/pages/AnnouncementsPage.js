@@ -1,10 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { LuAlertCircle } from "react-icons/lu";
-import { TbLoader2 } from "react-icons/tb";
 import { useAnnouncementsPageData } from "../hooks/useAnnouncementsPageData";
 import AlertCard from "../components/AlertCard";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 const AnnouncementsPage = () => {
   const { data, error, loading } = useAnnouncementsPageData();
@@ -34,32 +31,18 @@ const AnnouncementsPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col">
-        <Header />
-         <main className="flex-grow flex flex-col justify-center items-center">
-          <div
-            className={`fixed inset-0 bg-stone-800/40 flex justify-center overflow-y-auto md:overflow-y-scroll items-center z-50 transition-opacity m-0 duration-300 ${"opacity-100 pointer-events-auto"}`}
-          >
-            <div
-              className={`bg-white p-8 rounded-md shadow-xl w-full max-h-[90vh] transform max-w-fit flex items-center gap-4 transition-all duration-500 ease-out origin-center md:overflow-scroll overflow-auto 'scale-100'}`}
-            >
-              <TbLoader2 className="w-12 h-12 text-blue-600 animate-spin" />
-              <p className="text-lg font-medium text-gray-700">
-                Loading announcements...
-              </p>
-            </div>
+           <>
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#7BB9C4] mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading announcements...</p>
           </div>
-         </main>
-        <Footer />
-      </div>
+      </>
     );
   }
   // Error state
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col">
-        <Header />
-         <main className="flex-grow flex flex-col justify-center items-center">
+
           <div className="w-full flex flex-col justify-center items-center px-2 py-10 sm:px-5 md:px-10 lg:px-15 xl:px-22 space-y-6">
             <LuAlertCircle className="w-16 h-16 text-red-500" />
             <div className="flex flex-col items-center justify-center bg-gray-50">
@@ -84,9 +67,6 @@ const AnnouncementsPage = () => {
               </div>
             </div>
           </div>
-         </main>
-        <Footer />
-      </div>
     );
   }
 
@@ -96,9 +76,6 @@ const AnnouncementsPage = () => {
     : [data.announcements];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header />
-       <main className="flex-grow flex flex-col justify-center items-center">
       <div className="w-full bg-gray-50 py-8 px-4 sm:px-8 lg:px-16">
         <div className="mx-auto">
           {/* Header */}
@@ -147,9 +124,6 @@ const AnnouncementsPage = () => {
           )}
         </div>
       </div>
-       </main>
-      <Footer />
-    </div>
   );
 };
 

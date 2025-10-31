@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import ContactCard from "../components/ContactCard";
 import { FaPhone, FaUsers } from "react-icons/fa";
 import { useContactPageData } from "../hooks/useContactPageData";
@@ -23,19 +21,13 @@ function ContactsPage() {
   if (loading) {
     return (
       <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#7BB9C4]"></div>
-        </div>
-        <Footer />
       </>
     );
   }
   if (error) {
     return (
       <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Error Loading Contacts
@@ -50,8 +42,6 @@ function ContactsPage() {
               Try Again
             </button>
           </div>
-        </div>
-        <Footer />
       </>
     );
   }
@@ -61,8 +51,7 @@ function ContactsPage() {
 
   return (
     <>
-      <Header />
-      <div className="overflow-hidden font-poppins flex flex-col">
+      <div className="w-full font-poppins">
         {/* Hero Section */}
         <div
           className="w-full h-[865px] bg-center bg-cover bg-no-repeat flex flex-col items-center justify-center gap-5 text-white relative"
@@ -107,7 +96,6 @@ function ContactsPage() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

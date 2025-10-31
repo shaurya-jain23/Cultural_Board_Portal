@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 import InitiativeCard from "../components/InitiativeCard";
 import { useAllInitiativesPageData } from '../hooks/useAllInitiativesPageData';
 
@@ -46,19 +44,13 @@ const Initiatives = () => {
   if(loading){
     return (
       <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#7BB9C4]"></div>
-        </div>
-        <Footer />
       </>
     );
   }
   if (error) {
     return (
       <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Error Loading Initiatives
@@ -73,16 +65,13 @@ const Initiatives = () => {
               Try Again
             </button>
           </div>
-        </div>
-        <Footer />
       </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Header />
-      
+   <>
+    <div className="w-full font-poppins">
       {/* Hero Section */}
       <div className="relative w-full h-[60vh] bg-gradient-to-r from-[#7BB9C4] to-[#6aa8b3] flex items-center justify-center text-white">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -117,9 +106,8 @@ const Initiatives = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
+   </>
   );
 };
 

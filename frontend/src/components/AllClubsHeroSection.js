@@ -29,7 +29,7 @@ function AllClubsHeroSection() {
       console.log(clubsData);
   }, []); 
   return (
-    <div className="overflow-x-hidden font-poppins flex flex-col text-gray-200 bg-[#F5F5F5]">
+    <div className="overflow-x-hidden font-poppins bg-[#F5F5F5]">
       <div
         className="w-full h-[865px] bg-top bg-cover bg-no-repeat flex flex-col items-center justify-start pt-24 sm:pt-28 md:pt-40 lg:pt-48 gap-6 text-gray-200 z-1"
         style={{ backgroundImage:`url(${heroimg})`}}
