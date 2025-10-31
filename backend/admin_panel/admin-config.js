@@ -10,6 +10,7 @@ import TeamMember from "../models/teamMember.js";
 import { contactResourceOptions } from "./contactResource.js";
 import { eventResourceOptions } from "./eventResource.js";
 import { initiativesResourceOptions } from "./initiativesResource.js";
+import { announcementResourceOptions } from "./announcementResource.js";
 dotenv.config();
 
 const API_BASE = process.env.NODE_ENV === 'development' ?  (process.env.API_BASE || '') : '/cultural-board/api';
@@ -38,7 +39,7 @@ const authenticate = async (email, password) => {
 };
 
 const adminOptions = {
-  resources: [AboutUs, contactResourceOptions, eventResourceOptions, initiativesResourceOptions, Facilities, TeamMember, clubMain, homepage],
+  resources: [AboutUs, contactResourceOptions, eventResourceOptions, announcementResourceOptions,initiativesResourceOptions, Facilities, TeamMember, clubMain, homepage],
   rootPath: ADMINPANELROOT,
   loginPath: ADMINPANELROOT + "/login",
   logoutPath: ADMINPANELROOT + "/logout",
