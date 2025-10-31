@@ -4,8 +4,6 @@ import ScrollAnimation from "react-animate-on-scroll";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useParams } from "react-router-dom";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 import RoundedDiv from "../components/RoundedDiv";
 import useScrollDirection from "../hooks/useScrollDirection";
 
@@ -35,11 +33,7 @@ function EachClubPage() {
   if (loading) {
     return (
       <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#7BB9C4]"></div>
-        </div>
-        <Footer />
       </>
     );
   }
@@ -47,8 +41,6 @@ function EachClubPage() {
   if (error) {
     return (
       <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Error Loading Club Data
@@ -63,15 +55,11 @@ function EachClubPage() {
               Try Again
             </button>
           </div>
-        </div>
-        <Footer />
       </>
     );
   }
 
   return (
-    <div>
-      <Header />
       <div className="pt-20 overflow-hidden font-poppins flex flex-col">
         <div
            className="relative z-[10] w-full h-[865px] bg-top bg-cover bg-no-repeat flex flex-col items-center justify-center gap-5 text-gray-200 before:content-[''] before:absolute before:inset-0 before:bg-black/40 before:z-[-1]"
@@ -118,8 +106,6 @@ function EachClubPage() {
         <RoundedDiv Element={() => <GallerySection clubData={clubData} />} bg="#7BB9C4" top="-100px" />
         <RoundedDiv Element={() => <TeamLeadersSection clubData={clubData} />} bg="#F5F5F5" top="-100px" />
       </div>
-      <Footer />
-    </div>
   );
 }
 

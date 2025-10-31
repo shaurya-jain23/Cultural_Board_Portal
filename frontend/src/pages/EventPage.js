@@ -10,8 +10,6 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import { RiTeamLine } from "react-icons/ri";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import EnhancedRoundedDiv from "../components/EnhancedRoundedDiv";
 import { useEventPageData } from "../hooks/useEventPageData";
 
@@ -23,14 +21,10 @@ function EventPage() {
   if (loading) {
     return (
       <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
           <div className="text-center">
             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#7BB9C4] mx-auto mb-4"></div>
             <p className="text-gray-600">Loading event details...</p>
           </div>
-        </div>
-        <Footer />
       </>
     );
   }
@@ -38,8 +32,6 @@ function EventPage() {
   if (error) {
     return (
       <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
           <div className="text-center max-w-md mx-auto">
             <div className="text-6xl mb-4">😞</div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Event Not Found</h2>
@@ -61,8 +53,6 @@ function EventPage() {
               </Link>
             </div>
           </div>
-        </div>
-        <Footer />
       </>
     );
   }
@@ -70,8 +60,6 @@ function EventPage() {
   if (!event) {
     return (
       <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Event Not Found</h2>
             <Link 
@@ -81,8 +69,6 @@ function EventPage() {
               View All Events
             </Link>
           </div>
-        </div>
-        <Footer />
       </>
     );
   }
@@ -108,21 +94,17 @@ function EventPage() {
     : event.galleryImages || [];
 
   return (
-    <>
-      <Header />
-      <div className="min-h-screen bg-gray-50">
+    <div className='w-full overflow-x-hidden font-poppins relative'>
         {/* Back Navigation */}
-        <div className="bg-white border-b">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="py-4">
+        <div className="absolute z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
               <button
                 onClick={() => navigate(-1)}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors font-medium"
+                className="flex rounded-full items-center gap-2 duration-200 text-sm font-normal px-4 py-1.5 bg-[#f0fbfc] text-[#7BB9C4] hover:text-gray-500 transition-colors"
               >
                 <FaArrowLeft className="text-sm" />
                 Back to Events
               </button>
-            </div>
           </div>
         </div>
 
@@ -298,9 +280,7 @@ function EventPage() {
               </div>
             </EnhancedRoundedDiv>
         </div>
-      </div>
-      <Footer />
-    </>
+    </div>
   );
 }
 

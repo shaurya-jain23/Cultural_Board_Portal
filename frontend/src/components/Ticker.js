@@ -19,7 +19,7 @@ const Ticker = () => {
   return (
     <div className="bg-[#7BB9C4] py-2 sm:py-0 text-white overflow-hidden w-full">
       <div className="flex items-center">
-      <div className="hidden z-20 sm:block px-2 md:px-4 py-2 text-xs md:text-sm bg-red-500 font-bold whitespace-nowrap">
+      <div className="hidden z-20 sm:block px-2 md:px-4 py-2 text-xs md:text-sm bg-rose-500 font-bold whitespace-nowrap rounded-r-lg">
         LATEST ANNOUNCEMENTS:
       </div>
       <div className="flex animate-ticker py-2.2 md:py-1.9 whitespace-nowrap">

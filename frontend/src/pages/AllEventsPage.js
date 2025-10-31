@@ -1,9 +1,7 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { FaArrowDown, FaCalendarAlt, FaMapMarkerAlt, FaExternalLinkAlt } from "react-icons/fa";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { FaArrowDown, FaCalendarAlt, FaExternalLinkAlt } from "react-icons/fa";
 import EnhancedRoundedDiv from "../components/EnhancedRoundedDiv";
 import { useAllEventsPageData } from "../hooks/useAllEventsPageData";
 import { Link } from "react-router-dom";
@@ -15,19 +13,13 @@ function AllEventsPage() {
   if (loading) {
     return (
       <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#7BB9C4]"></div>
-        </div>
-        <Footer />
       </>
     );
   }
   if (error) {
     return (
       <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Error Loading Events
@@ -42,8 +34,6 @@ function AllEventsPage() {
               Try Again
             </button>
           </div>
-        </div>
-        <Footer />
       </>
     );
   }
@@ -53,8 +43,7 @@ function AllEventsPage() {
   const clubName = data?.homepage[0]?.boardname || [];
   return (
     <>
-      <Header />
-      <div className="overflow-hidden font-poppins flex flex-col">
+      <div className="w-full overflow-hidden font-poppins">
         {/* Enhanced Hero Section */}
         <div
           className="relative w-full h-screen bg-center bg-cover bg-no-repeat flex flex-col items-center justify-center gap-8 text-white"
@@ -93,7 +82,6 @@ function AllEventsPage() {
           ))}
         </div>
       </div>
-      <Footer />
     </>
   );
 }

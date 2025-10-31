@@ -7,13 +7,14 @@ import EachEventPage from "./pages/EventPage";
 import AllEventsPage from "./pages/AllEventsPage";
 import Initiatives from "./pages/Initiatives";
 import AnnouncementsPage from "./pages/AnnouncementsPage";
+import Layout from "./components/Layout";
 
 const BASEURL = process.env.REACT_APP_BASEURL||"/cultural-board";
 function App() {
   return (
     <BrowserRouter basename={`${BASEURL}`} >
       <Routes>
-        <Route path="/">
+        <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/contacts" element={<ContactsPage />} />
           <Route path="/clubs" element={<AllClubsPage />} />
